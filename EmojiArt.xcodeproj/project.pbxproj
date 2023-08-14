@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		745D255E2A8AC6EB003ECA5F /* PaletteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745D255D2A8AC6EB003ECA5F /* PaletteStore.swift */; };
 		74C10CE42A8A83C100112B49 /* EmojiArtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C10CE32A8A83C100112B49 /* EmojiArtApp.swift */; };
 		74C10CE62A8A83C100112B49 /* EmojiArtDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C10CE52A8A83C100112B49 /* EmojiArtDocumentView.swift */; };
 		74C10CE82A8A83C200112B49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74C10CE72A8A83C200112B49 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		745D255D2A8AC6EB003ECA5F /* PaletteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStore.swift; sourceTree = "<group>"; };
 		74C10CE02A8A83C100112B49 /* EmojiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C10CE32A8A83C100112B49 /* EmojiArtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtApp.swift; sourceTree = "<group>"; };
 		74C10CE52A8A83C100112B49 /* EmojiArtDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocumentView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				74C10CF32A8AA75900112B49 /* EmojiArtDocument.swift */,
 				74C10CF52A8AA7F900112B49 /* UtilityExtensions.swift */,
 				74C10CF72A8AA81A00112B49 /* UtilityViews.swift */,
+				745D255D2A8AC6EB003ECA5F /* PaletteStore.swift */,
 				74C10CE72A8A83C200112B49 /* Assets.xcassets */,
 				74C10CE92A8A83C200112B49 /* Preview Content */,
 			);
@@ -155,6 +158,7 @@
 				74C10CF62A8AA7F900112B49 /* UtilityExtensions.swift in Sources */,
 				74C10CF42A8AA75900112B49 /* EmojiArtDocument.swift in Sources */,
 				74C10CF82A8AA81A00112B49 /* UtilityViews.swift in Sources */,
+				745D255E2A8AC6EB003ECA5F /* PaletteStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
