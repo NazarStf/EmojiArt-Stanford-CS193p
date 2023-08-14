@@ -9,8 +9,8 @@ import SwiftUI
 
 struct EmojiArtDocumentView: View {
 	@ObservedObject var document: EmojiArtDocument
-	
-	let defaultEmojiFontSize: CGFloat = 40
+	@Environment(\.undoManager) var undoManager
+	@ScaledMetric var defaultEmojiFontSize: CGFloat = 40
 	
 	var body: some View {
 		VStack(spacing: 0) {
@@ -48,7 +48,6 @@ struct EmojiArtDocumentView: View {
 				// return Alert
 				alertToShow.alert()
 			}
-			// L12 monitor fetch status and alert user if fetch failed
 			.onChange(of: document.backgroundImageFetchStatus) { status in
 				switch status {
 				case .failed(let url):
@@ -57,13 +56,28 @@ struct EmojiArtDocumentView: View {
 					break
 				}
 			}
+			.onReceive(document.$backgroundImage) { image in
+				if autozoom { // L14 only "auto zoom" when drag and drop happens
+					zoomToFit(image, in: geometry.size)
+				}
+			}
+			// L14 simple undo UI just to demonstrate undo working
+			// L14 see UndoButton in UtilityViews.swift
+			.toolbar {
+				UndoButton(
+					undo: undoManager?.optionalUndoMenuItemTitle,
+					redo: undoManager?.optionalRedoMenuItemTitle
+				)
+			}
 		}
 	}
 	
-	// L12 state which says whether a certain identifiable alert should be showing
+	// L14 only "auto zoom" when drag and drop happens
+	// L14 so that @SceneStorage can restore our zoom/pan settings
+	@State private var autozoom = false
+	
 	@State private var alertToShow: IdentifiableAlert?
 	
-	// L12 sets alertToShow to an IdentifiableAlert explaining a url fetch failure
 	private func showBackgroundImageFetchFailedAlert(_ url: URL) {
 		alertToShow = IdentifiableAlert(id: "fetch failed: " + url.absoluteString, alert: {
 			Alert(
@@ -78,12 +92,16 @@ struct EmojiArtDocumentView: View {
 	
 	private func drop(providers: [NSItemProvider], at location: CGPoint, in geometry: GeometryProxy) -> Bool {
 		var found = providers.loadObjects(ofType: URL.self) { url in
-			document.setBackground(.url(url.imageURL))
+			autozoom = true // L14 only "auto zoom" when drag and drop happens
+			// L14 pass undo manager to Intent functions
+			document.setBackground(.url(url.imageURL), undoManager: undoManager)
 		}
 		if !found {
 			found = providers.loadObjects(ofType: UIImage.self) { image in
 				if let data = image.jpegData(compressionQuality: 1.0) {
-					document.setBackground(.imageData(data))
+					autozoom = true // L14 only "auto zoom" when drag and drop happens
+					// L14 pass undo manager to Intent functions
+					document.setBackground(.imageData(data), undoManager: undoManager)
 				}
 			}
 		}
@@ -93,7 +111,9 @@ struct EmojiArtDocumentView: View {
 					document.addEmoji(
 						String(emoji),
 						at: convertToEmojiCoordinates(location, in: geometry),
-						size: defaultEmojiFontSize / zoomScale
+						size: defaultEmojiFontSize / zoomScale,
+						// L14 pass undo manager to Intent functions
+						undoManager: undoManager
 					)
 				}
 			}
@@ -130,7 +150,9 @@ struct EmojiArtDocumentView: View {
 	
 	// MARK: - Zooming
 	
-	@State private var steadyStateZoomScale: CGFloat = 1
+	// L14 remember our zoom scale on a per-scene basis
+	@SceneStorage("EmojiArtDocumentView.steadyStateZoomScale")
+	private var steadyStateZoomScale: CGFloat = 1
 	@GestureState private var gestureZoomScale: CGFloat = 1
 	
 	private var zoomScale: CGFloat {
@@ -167,7 +189,9 @@ struct EmojiArtDocumentView: View {
 	
 	// MARK: - Panning
 	
-	@State private var steadyStatePanOffset: CGSize = CGSize.zero
+	// L14 remember our pan position on a per-scene basis
+	@SceneStorage("EmojiArtDocumentView.steadyStatePanOffset")
+	private var steadyStatePanOffset: CGSize = CGSize.zero
 	@GestureState private var gesturePanOffset: CGSize = CGSize.zero
 	
 	private var panOffset: CGSize {
