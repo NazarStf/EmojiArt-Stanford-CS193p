@@ -90,22 +90,22 @@ struct UndoButton: View {
 					Image(systemName: "arrow.uturn.forward.circle")
 				}
 			}
-				.contextMenu {
-					if canUndo {
-						Button {
-							undoManager?.undo()
-						} label: {
-							Label(undo ?? "Undo", systemImage: "arrow.uturn.backward")
-						}
-					}
-					if canRedo {
-						Button {
-							undoManager?.redo()
-						} label: {
-							Label(redo ?? "Redo", systemImage: "arrow.uturn.forward")
-						}
+			.contextMenu {
+				if canUndo {
+					Button {
+						undoManager?.undo()
+					} label: {
+						Label(undo ?? "Undo", systemImage: "arrow.uturn.backward")
 					}
 				}
+				if canRedo {
+					Button {
+						undoManager?.redo()
+					} label: {
+						Label(redo ?? "Redo", systemImage: "arrow.uturn.forward")
+					}
+				}
+			}
 		}
 	}
 }

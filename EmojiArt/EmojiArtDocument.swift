@@ -25,7 +25,7 @@ class EmojiArtDocument: ReferenceFileDocument
 	
 	static var readableContentTypes = [UTType.emojiart]
 	static var writeableContentTypes = [UTType.emojiart]
-
+	
 	required init(configuration: ReadConfiguration) throws {
 		if let data = configuration.file.regularFileContents {
 			emojiArt = try EmojiArtModel(json: data)
@@ -42,7 +42,7 @@ class EmojiArtDocument: ReferenceFileDocument
 	func fileWrapper(snapshot: Data, configuration: WriteConfiguration) throws -> FileWrapper {
 		FileWrapper(regularFileWithContents: snapshot)
 	}
-		
+	
 	// MARK: - Model
 	
 	@Published private(set) var emojiArt: EmojiArtModel {
@@ -86,16 +86,16 @@ class EmojiArtDocument: ReferenceFileDocument
 			let session = URLSession.shared
 			// get a publisher for this background image url
 			let publisher = session.dataTaskPublisher(for: url)
-				// change the publisher's output to be UIImage? instead of (Data, URLResponse)
+			// change the publisher's output to be UIImage? instead of (Data, URLResponse)
 				.map { (data, urlResponse) in UIImage(data: data) }
-				// if the publisher fails, just set the UIImage? to nil
+			// if the publisher fails, just set the UIImage? to nil
 				.replaceError(with: nil)
-				// be sure to have all subscribers do their work on the main queue
+			// be sure to have all subscribers do their work on the main queue
 				.receive(on: DispatchQueue.main)
 			// subscribe to the (modified) URLSession dataTaskPublisher
 			backgroundImageFetchCancellable = publisher
-				// execute this closure whenever that publisher publishes
-				// (set our background image and fetch status)
+			// execute this closure whenever that publisher publishes
+			// (set our background image and fetch status)
 				.sink { [weak self] image in
 					self?.backgroundImage = image
 					self?.backgroundImageFetchStatus = (image != nil) ? .idle : .failed(url)
