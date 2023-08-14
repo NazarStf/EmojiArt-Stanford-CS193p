@@ -39,7 +39,7 @@ extension RangeReplaceableCollection where Element: Identifiable {
 			remove(at: index)
 		}
 	}
-	
+
 	subscript(_ element: Element) -> Element {
 		get {
 			if let index = index(matching: element) {
