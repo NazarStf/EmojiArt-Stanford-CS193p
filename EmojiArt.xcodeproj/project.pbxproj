@@ -12,6 +12,7 @@
 		74C10CE82A8A83C200112B49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74C10CE72A8A83C200112B49 /* Assets.xcassets */; };
 		74C10CEB2A8A83C200112B49 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74C10CEA2A8A83C200112B49 /* Preview Assets.xcassets */; };
 		74C10CF22A8A845F00112B49 /* EmojiArtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C10CF12A8A845F00112B49 /* EmojiArtModel.swift */; };
+		74C10CF42A8AA75900112B49 /* EmojiArtDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C10CF32A8AA75900112B49 /* EmojiArtDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		74C10CE72A8A83C200112B49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74C10CEA2A8A83C200112B49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		74C10CF12A8A845F00112B49 /* EmojiArtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtModel.swift; sourceTree = "<group>"; };
+		74C10CF32A8AA75900112B49 /* EmojiArtDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocument.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				74C10CE32A8A83C100112B49 /* EmojiArtApp.swift */,
 				74C10CE52A8A83C100112B49 /* ContentView.swift */,
 				74C10CF12A8A845F00112B49 /* EmojiArtModel.swift */,
+				74C10CF32A8AA75900112B49 /* EmojiArtDocument.swift */,
 				74C10CE72A8A83C200112B49 /* Assets.xcassets */,
 				74C10CE92A8A83C200112B49 /* Preview Content */,
 			);
@@ -143,6 +146,7 @@
 				74C10CE62A8A83C100112B49 /* ContentView.swift in Sources */,
 				74C10CE42A8A83C100112B49 /* EmojiArtApp.swift in Sources */,
 				74C10CF22A8A845F00112B49 /* EmojiArtModel.swift in Sources */,
+				74C10CF42A8AA75900112B49 /* EmojiArtDocument.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
