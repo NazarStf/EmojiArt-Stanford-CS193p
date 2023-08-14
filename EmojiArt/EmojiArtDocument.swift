@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-class EmojiArtDocument: ObservableObject
-{
+class EmojiArtDocument: ObservableObject {
 	@Published private(set) var emojiArt: EmojiArtModel {
 		didSet {
 			if emojiArt.background != oldValue.background {
