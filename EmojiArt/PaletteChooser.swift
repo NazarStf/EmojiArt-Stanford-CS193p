@@ -38,12 +38,12 @@ struct PaletteChooser: View {
 	@ViewBuilder
 	var contextMenu: some View {
 		AnimatedActionButton(title: "Edit", systemImage: "pencil") {
-			//            editing = true
+//            editing = true
 			paletteToEdit = store.palette(at: chosenPaletteIndex)
 		}
 		AnimatedActionButton(title: "New", systemImage: "plus") {
 			store.insertPalette(named: "New", emojis: "", at: chosenPaletteIndex)
-			//            editing = true
+//            editing = true
 			paletteToEdit = store.palette(at: chosenPaletteIndex)
 		}
 		AnimatedActionButton(title: "Delete", systemImage: "minus.circle") {
@@ -55,9 +55,10 @@ struct PaletteChooser: View {
 		gotoMenu
 	}
 	
+//    @State private var editing = false
 	@State private var managing = false
 	@State private var paletteToEdit: Palette?
-	
+		
 	func body(for palette: Palette) -> some View {
 		HStack {
 			Text(palette.name)
@@ -66,6 +67,9 @@ struct PaletteChooser: View {
 		}
 		.id(palette.id)
 		.transition(rollTransition)
+//        .popover(isPresented: $editing) {
+//            PaletteEditor(palette: $store.palettes[chosenPaletteIndex])
+//        }
 		.popover(item: $paletteToEdit) { palette in
 			PaletteEditor(palette: $store.palettes[palette])
 		}
@@ -98,7 +102,7 @@ struct PaletteChooser: View {
 
 struct ScrollingEmojisView: View {
 	let emojis: String
-	
+
 	var body: some View {
 		ScrollView(.horizontal) {
 			HStack {
