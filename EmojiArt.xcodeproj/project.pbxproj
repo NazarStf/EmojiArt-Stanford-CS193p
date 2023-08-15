@@ -19,6 +19,9 @@
 		74C10CF42A8AA75900112B49 /* EmojiArtDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C10CF32A8AA75900112B49 /* EmojiArtDocument.swift */; };
 		74C10CF62A8AA7F900112B49 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C10CF52A8AA7F900112B49 /* UtilityExtensions.swift */; };
 		74C10CF82A8AA81A00112B49 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C10CF72A8AA81A00112B49 /* UtilityViews.swift */; };
+		74D378682A8B47150012A2E0 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D378672A8B47150012A2E0 /* Camera.swift */; };
+		74D3786A2A8B47320012A2E0 /* iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D378692A8B47320012A2E0 /* iOS.swift */; };
+		74D3786C2A8B47480012A2E0 /* PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D3786B2A8B47480012A2E0 /* PhotoLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,10 @@
 		74C10CF32A8AA75900112B49 /* EmojiArtDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocument.swift; sourceTree = "<group>"; };
 		74C10CF52A8AA7F900112B49 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
 		74C10CF72A8AA81A00112B49 /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
+		74D378672A8B47150012A2E0 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		74D378692A8B47320012A2E0 /* iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS.swift; sourceTree = "<group>"; };
+		74D3786B2A8B47480012A2E0 /* PhotoLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibrary.swift; sourceTree = "<group>"; };
+		74D3786D2A8B47850012A2E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +84,10 @@
 				745D25632A8ACE5B003ECA5F /* PaletteManager.swift */,
 				74C10CF52A8AA7F900112B49 /* UtilityExtensions.swift */,
 				74C10CF72A8AA81A00112B49 /* UtilityViews.swift */,
+				74D378672A8B47150012A2E0 /* Camera.swift */,
+				74D378692A8B47320012A2E0 /* iOS.swift */,
+				74D3786B2A8B47480012A2E0 /* PhotoLibrary.swift */,
+				74D3786D2A8B47850012A2E0 /* Info.plist */,
 				74C10CE72A8A83C200112B49 /* Assets.xcassets */,
 				74C10CE92A8A83C200112B49 /* Preview Content */,
 			);
@@ -161,8 +172,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D378682A8B47150012A2E0 /* Camera.swift in Sources */,
+				74D3786C2A8B47480012A2E0 /* PhotoLibrary.swift in Sources */,
 				74C10CE62A8A83C100112B49 /* EmojiArtDocumentView.swift in Sources */,
 				745D25602A8ACA34003ECA5F /* PaletteChooser.swift in Sources */,
+				74D3786A2A8B47320012A2E0 /* iOS.swift in Sources */,
 				74C10CE42A8A83C100112B49 /* EmojiArtApp.swift in Sources */,
 				745D25642A8ACE5B003ECA5F /* PaletteManager.swift in Sources */,
 				74C10CF22A8A845F00112B49 /* EmojiArtModel.swift in Sources */,

@@ -33,26 +33,28 @@ struct PaletteChooser: View {
 			Image(systemName: "paintpalette")
 		}
 		.font(emojiFont)
+		.paletteControlButtonStyle() // L16 see macOS.swift
 		.contextMenu { contextMenu }
 	}
 	
 	@ViewBuilder
 	var contextMenu: some View {
 		AnimatedActionButton(title: "Edit", systemImage: "pencil") {
-			//            editing = true
 			paletteToEdit = store.palette(at: chosenPaletteIndex)
 		}
 		AnimatedActionButton(title: "New", systemImage: "plus") {
 			store.insertPalette(named: "New", emojis: "", at: chosenPaletteIndex)
-			//            editing = true
 			paletteToEdit = store.palette(at: chosenPaletteIndex)
 		}
 		AnimatedActionButton(title: "Delete", systemImage: "minus.circle") {
 			chosenPaletteIndex = store.removePalette(at: chosenPaletteIndex)
 		}
+		// L16 no EditMode on macOS, so no PaletteManager
+		#if os(iOS)
 		AnimatedActionButton(title: "Manager", systemImage: "slider.vertical.3") {
 			managing = true
 		}
+		#endif
 		gotoMenu
 	}
 	
@@ -78,19 +80,18 @@ struct PaletteChooser: View {
 		}
 		.id(palette.id)
 		.transition(rollTransition)
-		//        .popover(isPresented: $editing) {
-		//            PaletteEditor(palette: $store.palettes[chosenPaletteIndex])
-		//        }
 		.popover(item: $paletteToEdit) { palette in
 			PaletteEditor(palette: $store.palettes[palette])
+				// L16 see macOS.swift
+				.popoverPadding()
+				// L15 make this popover dismissable with a Close button on iPhone
+				.wrappedInNavigationViewToMakeDismissable { paletteToEdit = nil }
 		}
 		.sheet(isPresented: $managing) {
 			PaletteManager()
 		}
 	}
-	
-	//    @State private var editing = false
-	
+		
 	@State private var managing = false
 	@State private var paletteToEdit: Palette?
 	
@@ -104,7 +105,7 @@ struct PaletteChooser: View {
 
 struct ScrollingEmojisView: View {
 	let emojis: String
-	
+
 	var body: some View {
 		ScrollView(.horizontal) {
 			HStack {
@@ -115,11 +116,10 @@ struct ScrollingEmojisView: View {
 			}
 		}
 	}
-	
 }
 
-struct PaletteChooser_Previews: PreviewProvider {
-	static var previews: some View {
-		PaletteChooser()
-	}
-}
+//struct PaletteChooser_Previews: PreviewProvider {
+//	static var previews: some View {
+//		PaletteChooser()
+//	}
+//}
